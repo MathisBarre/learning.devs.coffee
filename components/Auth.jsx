@@ -18,23 +18,18 @@ export default function Auth() {
   }
 
   return (
-    <div className="row flex flex-center">
-      <div className="col-6 form-widget">
-        <h1 className="header">Supabase + Next.js</h1>
-        <p className="description">Sign in via Github</p>
-        <div>
-          <button
-            onClick={(e) => {
-              e.preventDefault()
-              handleLogin(email)
-            }}
-            className="button block"
-            disabled={loading}
-          >
-            <span>{loading ? 'Loading' : 'Send magic link'}</span>
-          </button>
-        </div>
-      </div>
+    <div>
+      <button
+        onClick={(e) => {
+          e.preventDefault()
+          handleLogin(email)
+        }}
+        className="bg-[#181717] rounded px-4 py-2 text-white flex items-center"
+        disabled={loading}
+      >
+        <img className="h-5 mr-3" src="/images/icones/github.svg" alt="" />
+        <span className="font-medium">{loading ? 'Loading' : 'Connexion avec GitHub'}</span>
+      </button>
     </div>
   )
 }

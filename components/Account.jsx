@@ -67,22 +67,24 @@ export default function Account({ session }) {
 
   return (
     <div className="form-widget">
-      <div>
-        <label htmlFor="email">Email</label>
-        <input id="email" type="text" value={session.user.email} disabled />
+      <div className="flex flex-col mb-4">
+        <label htmlFor="email" className="mb-1 label">Adresse e-mail</label>
+        <input id="email" type="text" className="input" value={session.user.email} disabled />
       </div>
-      <div>
-        <label htmlFor="username">Name</label>
+      <div className="flex flex-col mb-4">
+        <label className="label" htmlFor="username">Nom</label>
         <input
+          className="input"
           id="username"
           type="text"
           value={username || ''}
           onChange={(e) => setUsername(e.target.value)}
         />
       </div>
-      <div>
-        <label htmlFor="website">Website</label>
+      <div className="flex flex-col mb-4">
+        <label className="label" htmlFor="website">Site internet</label>
         <input
+          className="input"
           id="website"
           type="website"
           value={website || ''}
@@ -90,20 +92,21 @@ export default function Account({ session }) {
         />
       </div>
 
-      <div>
-        <button
-          className="button block primary"
-          onClick={() => updateProfile({ username, website, avatar_url })}
-          disabled={loading}
-        >
-          {loading ? 'Loading ...' : 'Update'}
-        </button>
-      </div>
-
-      <div>
-        <button className="button block" onClick={() => supabase.auth.signOut()}>
-          Sign Out
-        </button>
+      <div className="flex items-center justify-end">
+        <div>
+          <button
+            className="rounded px-4 py-2 bg-blue-800 text-white mr-2"
+            onClick={() => updateProfile({ username, website, avatar_url })}
+            disabled={loading}
+          >
+            {loading ? 'Chargement...' : 'Mettre à jour'}
+          </button>
+        </div>
+        <div>
+          <button className="rounded px-4 py-2 bg-red-700 text-white" onClick={() => supabase.auth.signOut()}>
+            Déconnexion
+          </button>
+        </div>
       </div>
     </div>
   )
