@@ -10,15 +10,16 @@ export default function Home() {
     setSession(supabase.auth.session())
 
     supabase.auth.onAuthStateChange((_event, session) => {
+      console.log(session)
       setSession(session)
     })
   }, [])
 
   return (
     <div>
-      <header className=" shadow p-4">
-        <div className="container mx-auto flex items-center justify-between">
-          <h1 className="text-2xl text-gray-800 font-extrabold">learning.devs.coffee</h1>
+      <header className="p-4 shadow ">
+        <div className="container flex items-center justify-between mx-auto">
+          <h1 className="text-2xl font-extrabold text-gray-800">learning.devs.coffee</h1>
           {!session ? <Auth /> : (<>
             <span className="font-medium">Connecté ✔️</span>
           </>)}
