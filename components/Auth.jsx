@@ -3,12 +3,13 @@ import { supabase } from '../utils/supabaseClient'
 
 export default function Auth() {
   const [loading, setLoading] = useState(false)
-  const [email, setEmail] = useState('')
 
-  const handleLogin = async (email) => {
+  const handleLogin = async () => {
     try {
       setLoading(true)
-      const { error } = await supabase.auth.signIn({ provider: "github" })
+      const { error } = await supabase.auth.signIn({provider: "github"}, {
+        redirectTo: process.env.NEXT_PUBLIC_SIGNIN_REDIRECTION || "https://learning.devs.coffee"
+      })
       if (error) throw error
     } catch (error) {
       alert(error.error_description || error.message)
@@ -22,7 +23,7 @@ export default function Auth() {
       <button
         onClick={(e) => {
           e.preventDefault()
-          handleLogin(email)
+          handleLogin()
         }}
         className="bg-[#181717] rounded px-4 py-2 text-white flex items-center"
         disabled={loading}
