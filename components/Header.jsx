@@ -1,7 +1,33 @@
-import { useState } from 'react'
+import Link from "next/link"
+import { useState, useEffect } from 'react'
 import { supabase } from '../utils/supabaseClient'
+import { useSessionContext } from '../context/session'
 
-export default function Auth() {
+export default function Header() {
+  const {session, setSession} = useSessionContext()
+
+  useEffect(() => {
+    setSession(supabase.auth.session())
+
+    supabase.auth.onAuthStateChange((_event, session) => {
+      console.log(session)
+      setSession(session)
+    })
+  }, [])
+
+  return (
+    <header className="p-4 shadow ">
+      <div className="container flex items-center justify-between mx-auto">
+        <h1 className="text-2xl font-extrabold text-gray-800"><Link href="/"><a>learning.devs.coffee</a></Link></h1>
+        {!session ? <Auth /> : (<>
+          <Link href="/profil"><a className="font-medium">{session.user.email}</a></Link>
+        </>)}
+      </div>
+    </header>
+  )
+}
+
+function Auth() {
   const [loading, setLoading] = useState(false)
 
   const handleLogin = async () => {
