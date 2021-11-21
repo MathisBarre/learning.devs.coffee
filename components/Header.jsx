@@ -1,11 +1,12 @@
-import Link from "next/link"
 import { useState, useEffect } from 'react'
+import Link from "next/link"
+import Image from "next/image"
 import { supabase } from '../utils/supabaseClient'
 import { useSessionContext } from '../context/session'
 
 export default function Header() {
   const {session, setSession} = useSessionContext()
-
+  
   useEffect(() => {
     setSession(supabase.auth.session())
 
@@ -13,7 +14,7 @@ export default function Header() {
       console.log(session)
       setSession(session)
     })
-  }, [])
+  }, [setSession])
 
   return (
     <header className="py-4 shadow ">
@@ -54,7 +55,7 @@ function Auth() {
         className="bg-[#181717] rounded px-4 py-2 text-white flex items-center"
         disabled={loading}
       >
-        <img className="h-5 mr-3" src="/images/icones/github.svg" alt="" />
+        <Image className="h-5 mr-3" src="/images/icones/github.svg" alt="" />
         <span className="font-medium">{loading ? 'Loading' : 'Connexion avec GitHub'}</span>
       </button>
     </div>

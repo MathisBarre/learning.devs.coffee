@@ -1,7 +1,7 @@
 import Account from "../../components/Account"
 import { useSessionContext } from '../../context/session'
 
-export default function profil() {
+export default function Profil() {
   const {session, setSession} = useSessionContext()
 
   return (
