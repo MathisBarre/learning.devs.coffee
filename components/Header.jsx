@@ -16,8 +16,8 @@ export default function Header() {
   }, [])
 
   return (
-    <header className="p-4 shadow ">
-      <div className="container flex items-center justify-between mx-auto">
+    <header className="py-4 shadow ">
+      <div className="my-container flex items-center justify-between mx-auto">
         <h1 className="text-2xl font-extrabold text-gray-800"><Link href="/"><a>learning.devs.coffee</a></Link></h1>
         {!session ? <Auth /> : (<>
           <Link href="/profil"><a className="font-medium">{session.user.email}</a></Link>

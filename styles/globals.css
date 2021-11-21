@@ -22,5 +22,9 @@
   .label {
     @apply mb-1 font-medium;
   }
+
+  .my-container {
+    @apply container mx-auto max-w-7xl px-4;
+  }
 }
 

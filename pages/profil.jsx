@@ -5,7 +5,7 @@ export default function profil() {
   const {session, setSession} = useSessionContext()
 
   return (
-    <main className="container mx-auto mt-8">
+    <main className="my-container mt-8">
       {session && <Account key={session.user.id} session={session} />}
     </main>
   )
