@@ -1,5 +1,6 @@
 import { supabase } from "@/utils/supabaseClient"
 import IndexRessource from "@/components/pages/index/IndexRessource"
+import { useEffect } from "react"
 
 export default function Home({ ressourcesList }) {
   return (
