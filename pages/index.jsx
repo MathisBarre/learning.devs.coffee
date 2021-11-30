@@ -1,3 +1,4 @@
+import { supabase } from "@/utils/supabaseClient"
 import IndexRessource from "@/components/pages/index/IndexRessource"
 
 export default function Home({ ressourcesList }) {
@@ -16,20 +17,13 @@ export default function Home({ ressourcesList }) {
 export async function getStaticProps(context) {
   const secondsInOneHour = 36000
 
+  let { data } = await supabase
+    .from('learning-plateform')
+    .select('*')
+
   return {
     props: {
-      ressourcesList: [
-        {
-          name: "freeCodeCamp.org",
-          upvote: 83,
-          url: "https://freecodecamp.org"
-        },
-        {
-          name: "OpenClassrooms",
-          upvote: 20,
-          url: "https://openclassrooms.com"
-        },
-      ]
+      ressourcesList: data
     },
     revalidate: secondsInOneHour
   }

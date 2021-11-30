@@ -6,7 +6,7 @@ export default function IndexRessource({ ressource }) {
       <div className="flex items-center">
         <div className="mr-4 rounded py-1 px-2 bg-gray-200">{ressource.upvote}</div>
         <h2>
-          <a href={ressource.url} target="_blank" rel="noopener noreferrer" className="underline">
+          <a href={ressource.link} target="_blank" rel="noopener noreferrer" className="underline">
             {ressource.name}
           </a>
         </h2>
