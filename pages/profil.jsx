@@ -1,5 +1,5 @@
-import Account from "../../components/Account"
-import { useSessionContext } from '../../context/session'
+import Account from "../components/Account"
+import { useSessionContext } from '../context/session'
 
 export default function Profil() {
   const {session, setSession} = useSessionContext()
