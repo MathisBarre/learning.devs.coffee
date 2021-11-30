@@ -55,7 +55,9 @@ function Auth() {
         className="bg-[#181717] rounded px-4 py-2 text-white flex items-center"
         disabled={loading}
       >
-        <Image className="h-5 mr-3" src="/images/icones/github.svg" alt="" />
+        <span className="mr-2 flex justify-center">
+          <Image height="18" width="18" src="/images/icones/github.svg" alt="" />
+        </span>
         <span className="font-medium">{loading ? 'Loading' : 'Connexion avec GitHub'}</span>
       </button>
     </div>
